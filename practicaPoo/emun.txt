@@ -1,0 +1,16 @@
+EJEMPLO EJERCICIO POO JAVA Se  desea  realizar  una  aplicación  Java  para  la  gestión  de  empresas,  
+departamentos  y  empleados.  En  la  aplicación  se  deben almacenar los datos de los empleados 
+compuesto por los datos de una persona en general (dni, nombre, edad y estado) y los propios de un empleado 
+(sueldo, categoría y el departamento donde trabaja). De los departamentos hay que almacenar su nombre, identificador, 
+localización y la empresa a la que pertenecen. También hay que almacenar los empleados que trabajan en  el  departamento. 
+ De  las  empresas  hay  que  almacenar  su  nombre  y  cif  y  saber  que  departamentos  se  integran  en  ella. 
+ Tanto  las  empresas  como  los  empleados  tienen  una  dirección  compuesta  por:  calle,  número,  código  postal,  
+ localidad  y provincia.  Por  último,  necesitamos  almacenar  los  contratos  que  realizan  las  empresas  de  forma 
+  que  reflejen  la  fecha  de creación y los datos del empleado y la empresa. Desarrollar de forma esquemática las distintas 
+  clases que formarán el sistema con sus atributos y métodos (no es necesario desarrollar  todos  los  métodos  get  y  set  
+  de  todos  los  atributos,  con  especificarlos  para  un  único  atributo  en  una  clase  es suficiente).  De  forma  
+  voluntaria  se  pueden  crear  los  métodos  que  permitan  añadir  y  borrar  elementos  en  los  ArrayList utilizados así 
+  como los métodos toString(). Se deben especificar todas aquellas relaciones de  herencia y asociación entre las clases.  
+  En la clase Empleado se debe realizar un método que sea capaz de devolver el salario neto del empleado a partir del
+   tanto por ciento de retención que se le aplicaría a su sueldo bruto. Crear  una  clase  principal  
+con  método  main  donde  se  vea  la  instanciación  de  diversos  objetos  a  partir  de  las  clases desarrolladas.

@@ -19,7 +19,7 @@
 from CajaDeAhorro import CajaDeAhorro
 from CuentaCorriente import CuentaCorriente
 from CuentaBancaria import CuentaBancaria
-import random
+
 
 class Cliente():
 
@@ -33,33 +33,17 @@ class Cliente():
         self.__cuentas_bancarias = list[CuentaBancaria]()
         self.__idCuenta += self.__idCuenta
 
-    def crear_nueva_cuenta_bancaria(self, tipoCuenta: str):
-
-        if (tipoCuenta.lower() == "ahorro" or tipoCuenta.lower() == "corriente"):
-            if (tipoCuenta.lower() == "ahorro"):
-
-                CuentaAhorroCreada = CajaDeAhorro(
-                    random.randint(self.__idCuenta, 10000), random.randint(self.__idCuenta, 100000), self.razon_social, 0, 2000, 5, 5, 5)
+    def crear_nueva_cuenta_bancaria(self, Cuenta: CuentaBancaria):
+    
+            if (Cuenta != None):
                 self.cuentas_bancarias.append({
-                    "numero" : random.randint(self.__idCuenta, 10000),
-                    "tipo":"ahorro",
-                    "cuenta":CuentaAhorroCreada
+                    "numero" : Cuenta.nro_cuenta,
+                    "cuenta": Cuenta
                 })
+                return True
             else:
-        
-                CuentaCorrienteCreada = CuentaCorriente(
-                    random.randint(self.__idCuenta, 10000), random.randint(self.__idCuenta, 100000), self.razon_social, 0, 2000)
-                self.cuentas_bancarias.append(
-                    {
-                    "numero" : random.randint(self.__idCuenta, 10000),
-                    "tipo":"corriente",
-                    "cuenta":CuentaCorrienteCreada
-                }
-                )
-            return True
-        else:
-            return False
-
+                return False
+    
     @property
     def razon_social(self):
         return self.__razon_social
@@ -97,18 +81,10 @@ class Cliente():
     def cuentas_bancarias(self):
         return self.__cuentas_bancarias
     
-    def obtenerCuentaAhorro(self):
-        cuentaEncontrada = CajaDeAhorro(0,0,"None",0,0,0,0,0)
+    def obtenerCuenta(self,numero):
+        cuentaEncontrada = None
         for cuentas in self.cuentas_bancarias:
-            if cuentas.get("tipo") == "ahorro":
-                cuentaEncontrada:CajaDeAhorro = cuentas.get("cuenta")
-                break
-        return cuentaEncontrada
-
-    def obtenerCuentaCorriente(self):
-        cuentaEncontrada = CuentaCorriente(0,0,"None",0,0)
-        for cuentas in self.cuentas_bancarias:
-            if cuentas.get("tipo") == "corriente":
-                cuentaEncontrada:CuentaCorriente = cuentas.get("cuenta")
+            if cuentas.get("numero") == numero:          
+                cuentaEncontrada:CajaDeAhorro | CuentaCorriente = cuentas.get("cuenta")
                 break
         return cuentaEncontrada

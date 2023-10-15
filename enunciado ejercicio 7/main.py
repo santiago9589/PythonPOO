@@ -134,54 +134,60 @@
 from Banco import Banco
 from Cliente import Cliente
 from CajaDeAhorro import CajaDeAhorro
+from CuentaCorriente import CuentaCorriente
 
 # creacion del banco
 
 nuevoBanco = Banco("Santander Rio", "Av paseo colon 2045")
 
-#  ingreso de 3 clientes y 2 cuantas para cada uno
-
 cliente1 = Cliente("panaderia", 29045, "fisica", "Av san juan 4056")
-cliente1.crear_nueva_cuenta_bancaria("ahorro")
-cliente1.crear_nueva_cuenta_bancaria("corriente")
+nuevaCuenta1 = CajaDeAhorro(1,1,"cuenta1",2000,3000,3000,5,5)
+nuevaCuenta2 = CuentaCorriente(2,2,"cuenta2",2000,5)
+cliente1.crear_nueva_cuenta_bancaria(nuevaCuenta1)
+cliente1.crear_nueva_cuenta_bancaria(nuevaCuenta2)
 
+cliente2 = Cliente("kiosko", 29045, "fisica", "Av hipolito 203")
+nuevaCuenta3 = CajaDeAhorro(3,3,"cuenta3",2000,3000,3000,5,5)
+nuevaCuenta4 = CuentaCorriente(4,4,"cuenta4",2000,5)
+cliente2.crear_nueva_cuenta_bancaria(nuevaCuenta3)
+cliente2.crear_nueva_cuenta_bancaria(nuevaCuenta4)
 
+cliente3 = Cliente("lavadora", 33455, "fisica", "Av tutvg 344")
+nuevaCuenta5 = CajaDeAhorro(3,3,"cuenta3",2000,3000,3000,5,5)
+nuevaCuenta6 = CuentaCorriente(4,4,"cuenta4",2000,5)
+cliente3.crear_nueva_cuenta_bancaria(nuevaCuenta5)
+cliente3.crear_nueva_cuenta_bancaria(nuevaCuenta6)
 
-# cliente2 = Cliente("kiosko", 29045, "fisica", "Av hipolito 203")
-# cliente2.crear_nueva_cuenta_bancaria("ahorro")
-# cliente2.crear_nueva_cuenta_bancaria("corriente")
+nuevoBanco.crear_nuevo_cliente(cliente1)
+nuevoBanco.crear_nuevo_cliente(cliente2)
+nuevoBanco.crear_nuevo_cliente(cliente3)
 
-# cliente3 = Cliente("carro", 29045, "juridica", "Av Carlos calvo 203")
-# cliente3.crear_nueva_cuenta_bancaria("ahorro")
-# cliente3.crear_nueva_cuenta_bancaria("corriente")
 
 # deposito
 
-cuentaEjemplo1 = cliente1.obtenerCuentaAhorro()
-cuentaEjemplo2 = cliente1.obtenerCuentaCorriente()
+cuentaEjemplo1 = cliente1.obtenerCuenta(1)
+cuentaEjemplo2 = cliente2.obtenerCuenta(3)
 
-cuentaEjemplo1.depositar(200.56)
-cuentaEjemplo2.depositar(400.56)
+if cuentaEjemplo1 != None and cuentaEjemplo2 != None:
+    
+    cuentaEjemplo1.depositar(200.56)
+    print(cuentaEjemplo1.consultar_saldo())
 
 # extraccion
 
-cuentaEjemplo1.extraer(100.00)
-cuentaEjemplo2.extraer(100.00)
+    cuentaEjemplo1.extraer(100.00)
+    print(cuentaEjemplo1.consultar_saldo())
 
 # transferencia
 
-cuentaEjemplo1.transferir(100.00, cuentaEjemplo2)
+    cuentaEjemplo1.transferir(100.00,cuentaEjemplo2)
+    print(cuentaEjemplo1.consultar_saldo())
 
+#informacion de clientes y movimientos
 
 listaDeClientes = nuevoBanco.clientes
 
-for clientes in listaDeClientes:
-    print(clientes.cuit)
-    # clientes.obtenerCuentaAhorro().consultar_saldo()
-    # clientes.obtenerCuentaCorriente().consultar_saldo()
-
-    # print(f"movimientos de ahorro")
-    # print(clientes.obtenerCuentaAhorro().movimientos)
-
-    # print(f"movimientos de corriente")
-    # print(clientes.obtenerCuentaCorriente().movimientos)
+for Clientes in listaDeClientes:
+    for cuentas in Clientes.cuentas_bancarias:
+        print(cuentas.get("cuenta").consultar_saldo())
+        print(cuentas.get("cuenta").movimientos)

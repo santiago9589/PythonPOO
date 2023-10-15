@@ -21,9 +21,8 @@ class Banco():
         self.__domicilio = domicilio
         self.__clientes = list[Cliente]()
 
-    def crear_nuevo_cliente(self, razon_social, cuit, tipo_persona, domicilio):
-        if (razon_social != None and cuit != None and tipo_persona != None and domicilio != None):
-            nuevoCliente = Cliente(razon_social, cuit, tipo_persona, domicilio)
+    def crear_nuevo_cliente(self, nuevoCliente:Cliente):
+        if (nuevoCliente != None):
             self.clientes.append(nuevoCliente)
             return True
         else:
